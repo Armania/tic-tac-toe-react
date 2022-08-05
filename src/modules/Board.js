@@ -15,17 +15,17 @@ function Board(props) {
     console.log(listItems);
   return (
     <div>
-      <ul className="board-row">
+      <ul className="board-row clear-after">
         {listItems[0]}
         {listItems[1]}
         {listItems[2]}
       </ul>
-      <ul className="board-row">
+      <ul className="board-row clear-after">
         {listItems[3]}
         {listItems[4]}
         {listItems[5]}
       </ul>
-      <ul className="board-row">
+      <ul className="board-row clear-after">
         {listItems[6]}
         {listItems[7]}
         {listItems[8]}

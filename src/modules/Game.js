@@ -61,7 +61,7 @@ function Game() {
   }
 
   return (
-    <div className="game">
+    <div className="game clear-after">
       <section className="game-board">
         <Board
           history={history}

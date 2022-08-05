@@ -51,17 +51,10 @@ ol, ul {
 }
 
 main {
-  /*
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  */
   display: inline-block;
   position: relative;
   width:auto;
   margin:auto;
-  max-width: 800px;
 }
 main:after {
   clear: both;
@@ -76,16 +69,20 @@ section {
   margin: 1rem;
 }
 
+.clear-after:after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+.game {
+  background-color: #000;
+}
 .game-board {
   background-color: #000;
 }
   .board-row {
     display: block;
-  }
-  .board-row:after {
-    clear: both;
-    content: "";
-    display: table;
   }
 
     .square-container {
