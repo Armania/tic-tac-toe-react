@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 function Status(props) {
   let text = "";
   if (props.winner) {
-    text = "Winner: " + winner;
+    text = "Winner: " + props.winner;
   } else {
     text = "Turn " + props.stepNumber + ": " + (props.xIsNext ? "X" : "O") + "'s go.";
   }

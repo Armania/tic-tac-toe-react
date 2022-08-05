@@ -1,20 +1,35 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import Square from './Square';
 
 function Board(props) {
-  // copy the history prop passed from Game, into a history variable to edit.
   const history = props.history.slice(0, props.stepNumber + 1);
   const current = history[history.length - 1];
   const squares = current.squares.slice();
-  // itterate throgh the items in history's squares property to get a list of the game's squares and values. we will add the arrray index number(square number) and value as props to each square.
   const listItems = squares.map((square, index) => {
-    <li key={index.toString()} className="square-container">
-      <Square  value={square} onClick={() => props.onClick(index)}/>
-    </li>
-  });
+    return (
+      <li key={index.toString()} className="square-container">
+        <Square  value={square} handleClick={() => {props.handleClick(index);}}/>
+      </li>);
+    });
+    console.log(listItems);
   return (
     <div>
-      <ul>{listItems}</ul>
+      <ul className="board-row">
+        {listItems[0]}
+        {listItems[1]}
+        {listItems[2]}
+      </ul>
+      <ul className="board-row">
+        {listItems[3]}
+        {listItems[4]}
+        {listItems[5]}
+      </ul>
+      <ul className="board-row">
+        {listItems[6]}
+        {listItems[7]}
+        {listItems[8]}
+      </ul>
     </div>
   );
 }

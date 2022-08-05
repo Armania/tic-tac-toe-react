@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import 'reset-css';
 import './index.css';
-import Game from './Game';
+import Game from './modules/Game';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(

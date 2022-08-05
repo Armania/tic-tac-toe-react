@@ -79,32 +79,40 @@ section {
 .game-board {
   background-color: #000;
 }
+  .board-row {
+    display: block;
+  }
   .board-row:after {
     clear: both;
     content: "";
     display: table;
   }
 
-    .square {
+    .square-container {
       background: #fff;
       border: 1px solid #999;
       float: left;
-      font-size: 24px;
-      font-weight: bold;
-      font-family: cursive;
-      font-style:italic;
-      line-height: 34px;
       height: 34px;
       margin-right: -1px;
       margin-top: -1px;
+      max-width: 32%;
+      min-width: 34px;
       padding: 0;
-      text-align: center;
-      width: 34px;
     }
 
-    .square:focus {
+    .square-container:focus {
       outline: none;
     }
+      .square {
+        font-size: 24px;
+        font-weight: bold;
+        font-family: cursive;
+        font-style:italic;
+        height: 100%;
+        line-height: 34px;
+        text-align: center;
+        width: 100%;
+      }
   .game-info {
     background-color: #ccc;
   }

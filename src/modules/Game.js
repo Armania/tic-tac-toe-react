@@ -5,46 +5,42 @@ import History from './History';
 import Status from './Status';
 
 function Game() {
-  const [history, setHistory] = useState({ squares: Array(9).fill(null) });
+  const [history, setHistory] = useState([{ squares: Array(9).fill(null) }]);
   const [stepNumber, setStepNumber] = useState(0);
   const [xIsNext, setXIsNext] = useState(true);
   const [winner, setWinner] = useState(null);
 
-  handleClick = (i) => {
-    // make a copy of the game history to edit
-    const chistory =  this.state.history.slice(0, this.state.stepNumber + 1); // where is the state obj?
+  const handleClick = i => {
+    const chistory =  history.slice(0, stepNumber + 1);
     const current = chistory[chistory.length - 1];
     const squares = current.squares.slice();
-
-    // nxt check if there is a winner,
-    // or
-    // if this square already has a value
-    if (this.state.winner || squares[i]) {
+    if (winner || squares[i]) {
       return;
     }
-
-    // add the value to the given square (i: number)
     squares[i] = xIsNext ? "X" : "O";
-    // append, or .concat(), the new squares array, whith the new above clicked value added, with the copy of the game's history
     const present = chistory.concat([
       {
         squares: squares
       }
-    ])
-    // set all the state values.
-    // ? do I update each state property oneByOne? or update state once?
+    ]);
     setHistory(present);
+    setStepNumber(chistory.length);
     setXIsNext(!xIsNext);
     setWinner(calculateWinner(squares));
   }
 
-  jumpTo = (step) => {
+  const jumpTo = step => {
     let nxt = ((step % 2) === 0);
     setStepNumber(step);
     setXIsNext(nxt);
+    setWinner(calculateWinner(history[step].squares));
+    console.log(stepNumber, xIsNext, winner);
   }
 
-  calculateWinner = squares => {
+  const calculateWinner = squares => {
+    if (squares === Array(9).fill(null)) {
+      return null;
+    }
     const lines = [
       [0, 1, 2],
       [3, 4, 5],
@@ -68,20 +64,20 @@ function Game() {
     <div className="game">
       <section className="game-board">
         <Board
-          history={state.history}
-          step={state.stepNumber}
-          winner={state.winner}
-          onClick={(i) => handleClick(i)} />
+          history={history}
+          stepNumber={stepNumber}
+          winner={winner}
+          handleClick={(i) => handleClick(i)} />
       </section>
       <section className="game-info">
         <Status
-          winner={state.winner}
-          stepNumber ={state.stepNumber}
-          xIsNext={state.xIsNext}
+          winner={winner}
+          stepNumber={stepNumber}
+          xIsNext={xIsNext}
           />
         <History
           history={history}
-          onClick={(i) => jumpTo(i)}/>
+          jumpTo={(i) => {jumpTo(i);}}/>
       </section>
     </div>
   );

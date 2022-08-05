@@ -2,10 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 function Step(props){
-  const desc = props.step ? 'Return to move #' + prop.step : 'Reset';
+  const desc = props.step ? 'Return to move #' + props.step : 'Reset';
   return (
-    <button 
-      onClick={props.onClick}>
+    <button
+      onClick={props.jumpTo}>
         {desc}
       </button>
   )
